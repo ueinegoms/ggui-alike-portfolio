@@ -18,7 +18,7 @@
         }
         #bg-canvas {
             position: fixed; top: 0; left: 0;
-            width: 100dvw; height: 100dvh;
+            width: 100%; height: 100%;
             z-index: 0; pointer-events: none;
         }
         #wrapper, #log-monitor, #color-modal-overlay { position: relative; z-index: 1; }
@@ -90,10 +90,19 @@
             opacity: 0.2; transition: opacity 0.4s;
         }
         .commited .instancia-container { opacity: 1; }
-        /* CTAs sempre visíveis — visual leve, aguenta sem foco */
         .instancia-container.cta-inst { opacity: 1; }
 
-        /* CTA — display tipográfico editorial */
+        /* blur no candidato, some ao commitar */
+        #candidate-area .instancia-container {
+            filter: blur(8px);
+            transition: filter 0.7s ease;
+        }
+        .commited .instancia-container {
+            filter: blur(0px);
+            transition: filter 0.7s ease;
+        }
+
+        /* CTA */
         .cta-display {
             width: 100%; max-width: 680px; padding: 0 20px;
         }
@@ -107,12 +116,12 @@
             color: var(--text);
         }
         .cta-display .cta-sub {
-            font-size: 0.85rem; opacity: 0.35; letter-spacing: 0.06em;
+            font-size: 0.85rem; opacity: 0.6; letter-spacing: 0.06em;
             margin-bottom: 36px; line-height: 1.6;
         }
         .cta-display .cta-action {
             display: inline-flex; align-items: center; gap: 10px;
-            font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+            font-size: 0.95rem; letter-spacing: 0.14em; text-transform: uppercase;
             opacity: 0.55; cursor: pointer; transition: opacity 0.2s;
             background: none; border: none; color: var(--text); padding: 0;
         }
@@ -123,38 +132,33 @@
             display: flex; gap: 28px; flex-wrap: wrap; margin-top: 8px;
         }
         .cta-display .cta-links a {
-            font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+            font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase;
             color: var(--text); text-decoration: none; opacity: 0.4;
             transition: opacity 0.2s; border-bottom: 1px solid rgba(255,255,255,0.12);
             padding-bottom: 2px;
         }
         .cta-display .cta-links a:hover { opacity: 0.9; }
 
-        /* ARTE — só imagem, sem título */
+        /* ARTE */
         .art-card {
-            width: min(80vw, 520px); aspect-ratio: 1 / 1;
+            width: min(80vw, 520px);
             border-radius: 4px; overflow: hidden; position: relative;
         }
-        .art-placeholder {
-            width: 100%; height: 100%;
+        .art-card img {
+            width: 100%; height: auto; display: block;
+            border-radius: 4px;
+        }
+        /* fallback enquanto carrega */
+        .art-card .art-loading {
+            width: 100%; aspect-ratio: 1 / 1;
             background: rgba(255,255,255,0.04);
             display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-        }
-        .art-placeholder::before {
-            content: ''; position: absolute; inset: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent, transparent 18px,
-                rgba(255,255,255,0.02) 18px, rgba(255,255,255,0.02) 19px
-            );
-        }
-        .art-placeholder .art-id {
             font-family: monospace; font-size: 0.65rem;
             letter-spacing: 0.15em; opacity: 0.18; text-transform: uppercase;
+            border-radius: 4px;
         }
 
-        /* PROJETO — mídia 16:9 + texto */
+        /* PROJETO */
         .proj-card {
             width: min(80vw, 600px);
         }
@@ -192,16 +196,19 @@
             letter-spacing: -0.01em;
         }
         .proj-info p {
-            font-size: 0.82rem; color: rgba(240,237,232,0.38);
+            font-size: 0.9rem; color: rgba(240,237,232,0.38);
             line-height: 1.65; margin: 0;
         }
 
         /* HERO */
-        #sobre-mim .cta-display h2 {
-            font-weight: 900;
-        }
+        #sobre-mim .cta-display h2 { font-weight: 900; }
         .bar-fill { height: 100%; background: rgba(255,255,255,0.5); transition: width 0.3s; }
     </style>
+<script>
+/* __DESENHOS_INDEX_START__ */
+window.DESENHOS_INDEX = ["13.png", "15p.png", "16.png", "166515_314350715315510_681143223_n.jpg", "17.png", "4.png", "4915C7B7-56E0-493C-A0E0-08015CD8B59C.jpg", "5c282bde-5f1b-4749-8ae1-7761a61f5533.jpg", "61747b87-2603-4c1f-85c3-17a7f44841a4.jpg", "=d.jpg", "Asdf123%7C+V.gif", "CYMERA_20160705_174027.jpg", "Frame 634132 (1).png", "IMG-20170331-WA0023 (1).jpeg", "IMG-20240921-WA0020.jpg", "IMG-20240921-WA0021.jpg", "IMG-20240921-WA0023.jpg", "IMG-20240921-WA0029.jpg", "IMG-20240921-WA0032.jpg", "IMG-20240921-WA0033.jpg", "IMG-20240921-WA0034.jpg", "IMG-20240921-WA0039.jpg", "IMG-20240921-WA0041.jpg", "IMG-20240921-WA0042.jpg", "IMG-20240921-WA0043.jpg", "IMG-20240921-WA0045.jpg", "IMG-20240921-WA0049.jpg", "IMG-20240921-WA0057.jpg", "IMG-20240921-WA0058.jpg", "IMG-20240921-WA0059.jpg", "IMG-20240921-WA0060.jpg", "IMG-20240921-WA0061.jpg", "IMG-20240921-WA0063.jpg", "IMG-20240921-WA0074.jpg", "IMG-20240921-WA0079.jpg", "IMG-20240921-WA0081.jpg", "IMG-20240921-WA0082.jpg", "IMG-20240921-WA0083.jpg", "IMG-20240921-WA0086.jpg", "IMG-20240921-WA0088.jpg", "IMG-20240921-WA0090.jpg", "IMG-20240921-WA0093.jpg", "IMG-20240921-WA0095.jpg", "IMG-20240921-WA0097.jpg", "IMG-20240921-WA0098.jpg", "IMG-20240921-WA0099.jpg", "IMG-20240921-WA0103.jpg", "IMG-20240921-WA0104.jpg", "IMG-20240921-WA0105.jpg", "IMG-20240921-WA0106.jpg", "IMG-20240921-WA0108.jpg", "IMG-20240921-WA0110.jpg", "IMG_20170402_192119850 (1).jpg", "IMG_20210613_081519_588.jpg", "IMG_4290.PNG", "Imagem do WhatsApp de 2024-12-19 à(s) 20.30.55_f61a07ca.jpg", "Project 36 (20220501025735).png", "Project 40 (20220501025707).png", "Projeto (20220501025721).png", "Projeto (20240106063920).jpg", "Projeto (20240921085140).png", "Projeto (20240921085200).png", "Projeto (20240921085248).png", "Projeto (20240921085314).png", "Projeto (20240922020129).png", "Projeto (20240922124421).png", "Projeto (20250202101536).png", "Projeto (20250202103006).png", "Projeto (20250202114607).png", "Screenshot_20210628-143117_Painter.jpg", "Screenshot_20210629-144837_Painter.jpg", "Sem-Título-1.png", "Sem-Título-2.png", "Sem-Título-3.png", "Untitled (10).png", "brave_screenshot_brasil.uxdesign.cc.png", "copy-2.png", "day-4.png", "fantasy_day_by_waynegomes_d4rp1tf.jpg", "guaxinija.png", "guitars-flying-previa-cor.png", "guitars-flying-pronto.png", "juliana-medeiros.png", "kindred.jpg", "meow.jpg", "samurai.jpg", "season.jpg", "sketch1.gif", "sketch_while_i_was_traveling_by_waynegomes_d4m8now.jpg", "taric.png", "wayne-gomes-day-1.jpg", "wayne-gomes-sphynx.jpg", "wayne-gomes-spooky-scary-necromols.jpg", "xmliitary.jpg"];
+/* __DESENHOS_INDEX_END__ */
+</script>
 </head>
 <body>
 
@@ -211,19 +218,15 @@
 <div id="color-modal-overlay">
     <div id="color-modal">
         <h3>⬡ Color Map Editor</h3>
-
         <div class="csec">grupos principais</div>
         <div class="color-row"><label>Hero / Repouso (ctas)</label>    <input type="color" id="col-ctas"></div>
         <div class="color-row"><label>Contatos</label>                 <input type="color" id="col-CONTATOS"></div>
         <div class="color-row"><label>→ CTA Sketchbook</label>         <input type="color" id="col-GO_DESENHOS"></div>
         <div class="color-row"><label>→ CTA Portfolio</label>          <input type="color" id="col-GO_PROJETOS"></div>
-
         <div class="csec">desenhos (todos os D3.N herdam)</div>
         <div class="color-row"><label>Desenhos</label>                 <input type="color" id="col-desenhos"></div>
-
         <div class="csec">projetos (todos os P4.N herdam)</div>
         <div class="color-row"><label>Projetos</label>                 <input type="color" id="col-projetos"></div>
-
         <div class="modal-actions">
             <button id="btn-copy-colors">📋 Copiar COLOR_MAP</button>
             <button id="btn-close-modal">Fechar</button>
@@ -266,16 +269,9 @@
 (function() {
     const h = new Date().getHours();
     let greeting, eyebrow;
-    if (h >= 5 && h < 12) {
-        greeting = 'bom<br>dia';
-        eyebrow = '';
-    } else if (h >= 12 && h < 18) {
-        greeting = 'boa<br>tarde';
-        eyebrow = '';
-    } else {
-        greeting = 'boa<br>noite';
-        eyebrow = '';
-    }
+    if (h >= 5 && h < 12)       { greeting = 'bom<br>dia';   eyebrow = ''; }
+    else if (h >= 12 && h < 18) { greeting = 'boa<br>tarde'; eyebrow = ''; }
+    else                         { greeting = 'boa<br>noite'; eyebrow = ''; }
     document.getElementById('hero-greeting').innerHTML = greeting;
     document.getElementById('hero-eyebrow').textContent = eyebrow;
 })();
@@ -284,12 +280,12 @@
 // COLOR MAP
 // =============================================
 const DEFAULT_COLORS = {
-    'ctas': '#45f287',
-    'CONTATOS': '#8aa1ff',
+    'ctas':        '#45f287',
+    'CONTATOS':    '#8aa1ff',
     'GO_DESENHOS': '#13e75d',
     'GO_PROJETOS': '#374fae',
-    'desenhos': '#257e43',
-    'projetos': '#293460',
+    'desenhos':    '#257e43',
+    'projetos':    '#293460',
 };
 
 function loadColors() {
@@ -324,14 +320,12 @@ const gl = canvas.getContext('webgl');
 const vertSrc = `
     attribute vec2 a_pos; attribute vec2 a_uv; varying vec2 v_uv;
     uniform float u_t;
-    uniform float u_ar; /* aspect ratio width/height */
+    uniform float u_ar;
     uniform float u_w1a,u_w1f,u_w2a,u_w2f,u_w3a,u_w3f;
     void main() {
         v_uv = a_uv; vec2 p = a_pos * 1.4;
-        /* normaliza p para espaço "16:9 equivalente" antes de calcular ondas */
-        /* assim as ondas têm sempre a mesma densidade visual independente do AR */
         float targetAR = 16.0 / 9.0;
-        float scale = u_ar / targetAR; /* >1 em telas largas, <1 em portrait */
+        float scale = u_ar / targetAR;
         vec2 pn = vec2(p.x * min(scale, 1.0), p.y * min(1.0 / scale, 1.0));
         float w = u_w1a*sin(u_w1f*pn.x+u_t*1.0)
                 + u_w2a*cos(u_w2f*pn.y+u_t*0.7)
@@ -391,13 +385,19 @@ const uTP=gl.getUniformLocation(prog,'u_tp');
 const uWs=['u_w1a','u_w1f','u_w2a','u_w2f','u_w3a','u_w3f'].map(n=>gl.getUniformLocation(prog,n));
 
 function resize(){
-    const r=devicePixelRatio||1;
-    canvas.width=innerWidth*r; canvas.height=innerHeight*r;
-    gl.viewport(0,0,canvas.width,canvas.height);
+    const r = devicePixelRatio || 1;
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    canvas.width  = window.innerWidth  * r;
+    canvas.height = window.innerHeight * r;
+    gl.viewport(0, 0, canvas.width, canvas.height);
 }
-addEventListener('resize',resize); resize();
+window.addEventListener('resize', resize);
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', resize);
+}
+resize();
 
-// --- ESTADO DA TRANSIÇÃO ---
 let sSt = hexToRgb(DEFAULT_COLORS.ctas);
 let sTgt = hexToRgb(DEFAULT_COLORS.ctas);
 let sTP = 1.0, sTStart = 0;
@@ -406,17 +406,15 @@ let sTime = 0, lastTS = 0;
 
 function eio(t) { return 0.5 - 0.5 * Math.cos(Math.PI * t); }
 
-// Retorna a cor visual atual (interpolada no ponto exato onde o shader está)
 function currentColor() {
     const ep = eio(Math.min(sTP, 1.0));
     return sSt.map((s, i) => s + (sTgt[i] - s) * ep);
 }
 
-// FIX: sempre parte da cor visual atual — sem pulo, sem pisca
 function triggerColor(key) {
     const col = getColor(key);
     if (col.every((v, i) => Math.abs(v - sTgt[i]) < 0.004)) return;
-    sSt = currentColor(); // ← captura onde está agora, não o destino anterior
+    sSt = currentColor();
     sTgt = col;
     sTP = 0;
     sTStart = performance.now();
@@ -442,7 +440,7 @@ function triggerColor(key) {
 })(0);
 
 // =============================================
-// DETECÇÃO DE CENTRO DA TELA (scroll-based)
+// DETECÇÃO DE CENTRO DA TELA
 // =============================================
 let centerKey = 'ctas';
 
@@ -458,11 +456,9 @@ function detectCenter() {
     }
 
     check(document.getElementById('sobre-mim'), 'ctas');
-
     document.querySelectorAll('#timeline [data-item-key]').forEach(el => {
         check(el, el.dataset.itemKey);
     });
-
     const area = document.getElementById('candidate-area');
     if (area.children.length && area.dataset.currentKey) {
         check(area, area.dataset.currentKey);
@@ -486,6 +482,7 @@ const LIVE = {
     get share(){ return parseInt(document.getElementById('cfg-share').value) }
 };
 
+// Templates de desenhos são gerados dinamicamente após fetch do JSON
 const templates = {
     ctas: {
         "CONTATOS": `<div class="instancia-container cta-inst"><div class="cta-display">
@@ -517,15 +514,12 @@ const templates = {
             </button>
         </div></div>`
     },
-    desenhos: {}, projetos: {}
+    desenhos: {},
+    projetos: {}
 };
-for(let i=1;i<=5;i++){
-    templates.desenhos[`D3.${i}`]=`<div class="instancia-container"><div class="art-card">
-        <div class="art-placeholder">
-            <span class="art-id">ART — 3.${i}</span>
-        </div>
-    </div></div>`;
 
+// Projetos continuam como placeholder
+for(let i=1;i<=5;i++){
     templates.projetos[`P4.${i}`]=`<div class="instancia-container"><div class="proj-card">
         <div class="proj-media">
             <div class="media-label">
@@ -540,6 +534,44 @@ for(let i=1;i<=5;i++){
     </div></div>`;
 }
 
+// =============================================
+// CARREGA DESENHOS DO JSON
+// =============================================
+function buildDesenhoTemplate(filename, index) {
+    const src = `desenhos/${filename}`;
+    return `<div class="instancia-container"><div class="art-card">
+        <img
+            src="${src}"
+            alt="desenho ${index + 1}"
+            loading="lazy"
+        >
+    </div></div>`;
+}
+
+function loadDesenhos() {
+    const arquivos = window.DESENHOS_INDEX || [];
+
+    if (!arquivos.length) {
+        console.warn('[ggui] window.DESENHOS_INDEX vazio ou não encontrado.');
+        console.warn('[ggui] Rode gerar_index_desenhos.py para injetar a lista no HTML.');
+        templates.desenhos['D3.1'] = `<div class="instancia-container"><div class="art-card">
+            <div class="art-loading">rode gerar_index_desenhos.py</div>
+        </div></div>`;
+        return;
+    }
+
+    templates.desenhos = {};
+    arquivos.forEach((filename, i) => {
+        const key = `D3.${i + 1}`;
+        templates.desenhos[key] = buildDesenhoTemplate(filename, i);
+    });
+
+    console.log(`[ggui] ${arquivos.length} desenho(s) carregado(s).`);
+}
+
+// =============================================
+// ESTADO
+// =============================================
 let state={
     targetWeights:{}, currentWeights:{},
     focusGroup:'ctas', lastDecayTime:Date.now(),
@@ -599,7 +631,6 @@ function injectIntent(group){
     const share=LIVE.share/items.length;
     items.forEach(item=>{ state.currentWeights[item]=share; });
     Object.keys(state.currentWeights).forEach(k=>{ if(!items.includes(k)) state.currentWeights[k]=0; });
-    // Garante que o próximo candidato é do novo foco
     state.last = null;
     const firstItem = items[Math.floor(Math.random()*items.length)];
     state.currentCandidate = firstItem;
@@ -617,10 +648,19 @@ function commit(){
     state.last=item; state.currentWeights[item]=0;
     const area=document.getElementById('candidate-area');
     const div=document.createElement('div');
-    div.className='commited';
     div.dataset.itemKey=item;
     div.innerHTML=area.innerHTML;
+
+    // nasce sem .commited → blur ativo
     document.getElementById('timeline').appendChild(div);
+
+    // duplo rAF garante que o browser pintou o frame com blur antes de remover
+    requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+            div.classList.add('commited');
+        });
+    });
+
     area.innerHTML=''; area.dataset.currentKey='';
     setTimeout(()=>{ state.isLocked=false; runEngine(); },500);
 }
@@ -652,8 +692,10 @@ function updateMonitor(){
             </div>`).join('');
 }
 
+// Carrega desenhos e inicia o engine
+loadDesenhos();
 init();
-setInterval(runEngine,400);
+setInterval(runEngine, 400);
 
 // =============================================
 // COLOR MODAL
@@ -666,14 +708,12 @@ function openColorModal(){
     document.getElementById('color-modal-overlay').classList.add('open');
 }
 
-// FIX: live preview parte da cor atual interpolada, não reseta centerKey
 document.getElementById('color-modal-overlay').addEventListener('input',e=>{
     if(e.target.type!=='color') return;
     const key=e.target.id.replace('col-','');
     COLOR_HEX[key]=e.target.value;
-    // Força transição suave da cor atual para a nova cor do centerKey
     const col = getColor(centerKey);
-    sSt = currentColor();  // ← captura visual atual antes de mudar sTgt
+    sSt = currentColor();
     sTgt = col;
     sTP = 0;
     sTStart = performance.now();
